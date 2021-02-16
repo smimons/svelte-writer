@@ -1,6 +1,6 @@
 import firebase from 'firebase/app';
 import 'firebase/firestore';
-var firebaseConfig = {
+const firebaseConfig = {
     apiKey: "AIzaSyDbLXIqNksPlcb9ZqUm1gup1nN9B9r-Nfk",
     authDomain: "svelte-writer.firebaseapp.com",
     projectId: "svelte-writer",

@@ -12,6 +12,15 @@ const firstLines: string[] = [
     "The sky above the port was the color of television, tuned to a dead channel...",
     "This all happened, more or less...",
     "It was love at first sight...",
+    "It was a pleasure to burn...",
+    "Far out in the uncharted backwaters of the unfashionable end of the western spiral arm of the Galaxy lies a small, unregarded yellow sun...",
+    "The past is a foreign country; they do things differently there...",
+    "This is my favourite book in the world, though I have never read it...",
+    "All children, except one, grow up...",
+    "In a hole in the ground, there lived a hobbit...",
+    "The moment one learns English, complications set in...",
+    "We were somewhere around Barstow on the edge of the desert when the drugs began to take hold...",
+    "There was no possibility of taking a walk that day...",
 ]
 
 export const randomLine = (): string => {
@@ -19,7 +28,7 @@ export const randomLine = (): string => {
     return firstLines[index]
 }
 
-export const WELCOME_BODY = "Welcome to Svelte Writer. The simple writing app. " +
+export const WELCOME_BODY = "Welcome to Svelte Writer, a simple writing app made with the Svelte UI framework." +
     "\n\n - To get started, select a page, or add a new one." +
-    "\n\n - Delete a page by clicking the cross by its title." +
-    "\n\n - Your changes are automatically saved, so you can focus on writing.";
+    "\n - Delete a page by clicking the cross by its title." +
+    "\n - Your changes are automatically saved, so you can focus on writing.";

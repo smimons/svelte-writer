@@ -24,7 +24,6 @@ const deletePage = async (timestamp: string) => {
 }
 
 const updatePage = async (page: Page) => {
-    console.log("update");
     update(pages => ({ ...pages, [page.timestamp]: page }))
     await PAGE_COLLECTION.doc(page.timestamp).update({ body: page.body })
 }

@@ -9,9 +9,10 @@
 	} from "../Utils/functions";
 	import MenuItem from "./MenuItem.svelte";
 	import { onMount } from "svelte";
+
 	let title: string = "";
 	let selected: Page = $pages["intro"];
-	let firstLine;
+	let firstLine: string;
 
 	function addPage(): void {
 		if (title.length > 0) {

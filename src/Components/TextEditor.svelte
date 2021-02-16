@@ -8,7 +8,6 @@
     let timer: number = 0;
     export let firstLine = randomLine();
 
-    console.log(page);
     $: page.body && !!page.timestamp.length && eventTimer();
 
     const eventTimer = (): void => {
@@ -33,7 +32,7 @@
         padding: 1.5rem 2rem;
         outline: none;
         resize: none;
-        height: 90vh;
+        height: 94vh;
     }
 
     ::placeholder {
