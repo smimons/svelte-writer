@@ -1,4 +1,4 @@
-export function uuid(): string {
+export function generateTimestamp(): string {
     return new Date().toISOString()
 }
 
@@ -17,4 +17,9 @@ const firstLines: string[] = [
 export const randomLine = (): string => {
     const index = Math.floor(Math.random() * firstLines.length);
     return firstLines[index]
-} 
+}
+
+export const WELCOME_BODY = "Welcome to Svelte Writer. The simple writing app. " +
+    "\n\n - To get started, select a page, or add a new one." +
+    "\n\n - Delete a page by clicking the cross by its title." +
+    "\n\n - Your changes are automatically saved, so you can focus on writing.";
