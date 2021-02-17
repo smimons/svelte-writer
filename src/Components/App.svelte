@@ -2,34 +2,31 @@
 	import pages from "../Stores/pages";
 	import type { Page } from "../Utils/interfaces";
 	import TextEditor from "./TextEditor.svelte";
-	import {
-		generateTimestamp,
-		randomLine,
-		WELCOME_BODY,
-	} from "../Utils/functions";
+	import { DEFAULT_PAGE, generateTimestamp } from "../Utils/utils";
 	import MenuItem from "./MenuItem.svelte";
 	import { onMount } from "svelte";
 
+	let currentPageStamp = localStorage.getItem("selectedPage");
 	let title: string = "";
-	let selected: Page = $pages["intro"];
-	let firstLine: string;
+	$: selected = $pages[currentPageStamp];
 
 	function addPage(): void {
-		if (title.length > 0) {
-			const timestamp = generateTimestamp();
-			pages.addNewPage({ title, timestamp, body: "" });
+		if (!!title.length) {
+			const newPage = { title, timestamp: generateTimestamp(), body: "" };
+			pages.addNewPage(newPage);
+			selectPage(newPage);
 			title = "";
-			selected = $pages[timestamp];
 		}
 	}
 
 	function deletePage(page: Page): void {
-		selected = undefined;
+		selectPage(undefined);
 		pages.deletePage(page.timestamp);
 	}
 
-	$: if (selected) {
-		firstLine = randomLine();
+	function selectPage(page: Page): void {
+		currentPageStamp = page?.timestamp;
+		localStorage.setItem("selectedPage", page?.timestamp);
 	}
 
 	onMount(pages.getAllPages);
@@ -48,18 +45,15 @@
 		</form>
 		{#each Object.values($pages) as page}
 			<MenuItem
-				on:select={() => (selected = page)}
+				on:select={() => selectPage(page)}
 				on:delete={() => deletePage(page)}
 				{page}
-				selected={page.timestamp === selected?.timestamp}
+				selected={page.timestamp === currentPageStamp}
 			/>
 		{/each}
 	</div>
 	<div class="divider" />
-	<TextEditor
-		{firstLine}
-		page={selected ?? { title: "", timestamp: "", body: WELCOME_BODY }}
-	/>
+	<TextEditor page={selected ?? DEFAULT_PAGE} />
 	<div class="spacer" />
 </main>
 

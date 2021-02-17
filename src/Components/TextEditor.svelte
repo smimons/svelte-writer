@@ -1,12 +1,10 @@
 <script lang="ts">
     import pages from "../Stores/pages";
     import type { Page } from "../Utils/interfaces";
-    import { randomLine } from "../Utils/functions";
     export let page: Page;
 
     let triggerSave: boolean = false;
     let timer: number = 0;
-    export let firstLine = randomLine();
 
     $: page.body && !!page.timestamp.length && eventTimer();
 
@@ -14,7 +12,7 @@
         clearTimeout(timer);
         timer = setTimeout(() => {
             triggerSave = true;
-        }, 2000);
+        }, 1500);
     };
 
     $: if (!!triggerSave) {
@@ -23,7 +21,7 @@
     }
 </script>
 
-<textarea bind:value={page.body} placeholder={firstLine} />
+<textarea bind:value={page.body} placeholder={"Write something..."} />
 
 <style>
     textarea {

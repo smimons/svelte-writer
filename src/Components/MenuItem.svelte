@@ -5,18 +5,10 @@
 
     export let page: Page;
     export let selected: boolean;
-
-    function handleSelect(): void {
-        dispatch("select");
-    }
-
-    function handleDelete(): void {
-        dispatch("delete");
-    }
 </script>
 
-<div on:click={handleSelect} class={selected ? "selected" : ""}>
-    <i class="fas fa-times" on:click={handleDelete} />
+<div on:click={() => dispatch("select")} class:selected>
+    <i class="fas fa-times" on:click={() => dispatch("delete")} />
     {page?.title}
 </div>
 
